@@ -1,23 +1,26 @@
-
+//Intro o intento de barrera
 let Profe;
-let mensajeIntro = 'Bienvenida profe y tutor!';
+let mensajeIntro = 'Bienvenida profe o tutor!';
 let mensajeOutro = 'Acceso denegado';
 
 Profe = prompt ('Es usted la profe o tutor? Si/No')
 
 if (Profe == 'Si'){
-    alert(mensajeIntro)
-} else {
-    alert(mensajeOutro)
-}
+    alert(mensajeIntro);
 
+//Valores constantes para la calculadora
 const SUMAR = '+';
 const RESTAR = '-';
 const PRODUCTO = '*';
 const DIVISION = '/';
 
+
+//Comienzo de calculadora
+
 do {
+    
 alert('Bienvenido a la calculadora! Operaciones = "+": Sumar "-": Restar "*": Multiplicar "/": Division');
+
 let operacion = prompt ('Ingrese la Operacion que desea realizar "+ - * /"');
 let Numero1 = Number (prompt ('Ingrese el primer numero'));
 let Numero2 = Number (prompt ('Ingrese el segundo numero'));
@@ -47,5 +50,7 @@ continuar = prompt('Desea continuar ? Si/No');
 }
 while (continuar == 'Si');
 
-
+} else {
+    alert(mensajeOutro);
+}
 
