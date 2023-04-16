@@ -17,7 +17,7 @@ const PRODUCTO = '*';
 const DIVISION = '/';
 
 do {
-alert('Bienvenido a la calculadora! "+": Sumar "-": Restar "*": Multiplicar "/": Division');
+alert('Bienvenido a la calculadora! Operaciones = "+": Sumar "-": Restar "*": Multiplicar "/": Division');
 let operacion = prompt ('Ingrese la Operacion que desea realizar "+ - * /"');
 let Numero1 = Number (prompt ('Ingrese el primer numero'));
 let Numero2 = Number (prompt ('Ingrese el segundo numero'));
