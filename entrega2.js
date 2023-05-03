@@ -25,7 +25,7 @@ Aviones.push(new Avion ('MiG27','Interceptador','RUSIA','70s hasta Actualidad','
 
 do {
 
-let Eleccion = prompt ('Indique que filtro quiere aplicar : 1 - Por tipo 2')
+let Eleccion = prompt ('Indique que filtro quiere aplicar : 1 - Por tipo 2 - Por Nombre')
 
 
             switch(Eleccion){
@@ -50,10 +50,8 @@ function Filtradoportipo(){
 
 function Filtropornombre (){
     const inputUsuario = prompt ('Ingrese nombre del avion');
-    const Avionencontrando = Aviones.find((Avion) => Avion.nombre === inputUsuario.toLowerCase());
-    if (Avionencontrando) {
-        alert (Avionencontrando.nombre);
-    }
+    const Avionencontrando = Aviones.find((Avion) => Avion.Nombre === inputUsuario.toLowerCase());
+    Avionencontrando.forEach((Avion) => alert(Avion.Nombre));
 }
 
 continuar = prompt ('Desea continuar ? Si/No');
