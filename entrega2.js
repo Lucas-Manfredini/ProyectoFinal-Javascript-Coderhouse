@@ -45,7 +45,7 @@ let Eleccion = prompt ('Indique que filtro quiere aplicar : 1 - Por tipo 2 - Por
 function Filtradoportipo(){
     const inputUsuario = prompt ('Ingrese un Tipo');
     const AvionesTipo = Aviones.filter ((Avion) => Avion.Tipo === inputUsuario.toLowerCase());
-    AvionesTipo.forEach((Avion) => alert(Avion.Tipo));
+    alert (AvionesTipo);
 }
 
 // Filtro por Nombre
@@ -53,11 +53,7 @@ function Filtradoportipo(){
 function Filtropornombre (){
     const inputUsuario = prompt ('Ingrese nombre del avion');
     const AvionesNombres = Aviones.find((Avion) => Avion.Nombre === inputUsuario.toLowerCase());
-    AvionesNombres.forEach((Avion) => alert(Avion.Nombre));
-    
-    if (AvionesNombres){
-        alert (AvionesNombres.Nombre);
-    }
+    alert (AvionesNombres);
 }
 
 continuar = prompt ('Desea continuar ? Si/No');
