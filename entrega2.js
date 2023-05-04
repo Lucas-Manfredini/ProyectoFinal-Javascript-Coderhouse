@@ -1,15 +1,5 @@
 // TP 2
 
-let Profe;
-let MensajeIntro = 'Bienvenidos al RandomSim de aviones';
-let MensajeOutro = 'Acceso denegado';
-
-Profe = prompt ('Usted es profesora o tutor de Coderhouse? Si/No')
-
-if (Profe == 'Si'){
-    alert (MensajeIntro);
-
-
 // Arrays con Aviones nuevos.
 const Aviones = [];
 
@@ -20,8 +10,20 @@ Aviones.push(new Avion ('MiG21','Caza','RUSIA','70s hasta 90','Retirado','R-3S/R
 Aviones.push(new Avion ('MiG29','Caza','RUSIA','70s hasta 90','En servicio','R-27,R-73,Guns'));
 Aviones.push(new Avion ('MiG27','Interceptador','RUSIA','70s hasta Actualidad','En servicio','R-60,Kh-23,Guns'));
 
+
 //Console para verificar si el array carga = CHECK, carga.
 //console.log(Aviones)
+
+
+let Profe;
+let MensajeIntro = 'Bienvenidos al RandomSim de aviones';
+let MensajeOutro = 'Acceso denegado';
+
+Profe = prompt ('Usted es profesora o tutor de Coderhouse? Si/No')
+
+if (Profe == 'Si'){
+    alert (MensajeIntro);
+
 
 do {
 
@@ -29,9 +31,9 @@ let Eleccion = prompt ('Indique que filtro quiere aplicar : 1 - Por tipo 2 - Por
 
 
             switch(Eleccion){
-                case 1: Filtradoportipo ();
+                case '1': Filtradoportipo ();
                     break;
-                case 2: Filtropornombre();
+                case '2': Filtropornombre();
                     break;
                     default:
                             alert ('No ingreso datos');
@@ -50,8 +52,12 @@ function Filtradoportipo(){
 
 function Filtropornombre (){
     const inputUsuario = prompt ('Ingrese nombre del avion');
-    const Avionencontrando = Aviones.find((Avion) => Avion.Nombre === inputUsuario.toLowerCase());
-    Avionencontrando.forEach((Avion) => alert(Avion.Nombre));
+    const AvionesNombres = Aviones.find((Avion) => Avion.Nombre === inputUsuario.toLowerCase());
+    AvionesNombres.forEach((Avion) => alert(Avion.Nombre));
+    
+    if (AvionesNombres){
+        alert (AvionesNombres.Nombre);
+    }
 }
 
 continuar = prompt ('Desea continuar ? Si/No');
