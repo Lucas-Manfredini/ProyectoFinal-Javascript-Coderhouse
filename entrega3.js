@@ -1,3 +1,20 @@
+const personasAutorizadas = ["Rodrigo", "Melina", "Lucas"]; // Nombres de las personas autorizadas puestas en un array
+
+function verificarIngreso() {
+const nombre = prompt("Por favor, ingrese su nombre:");
+
+if (personasAutorizadas.includes(nombre)) {
+    console.log("¡Bienvenido, " + nombre + "! Puedes acceder al Carro de compras.");
+    // Aquí puedes agregar el resto del código que deseas ejecutar
+} else {
+    console.log("Lo siento, no tienes acceso al Carro de compras.");
+}
+}
+
+verificarIngreso();
+
+
+
 let Carro = []; // Items del carro en Array
 let Almacen = []; // Stock de productos en Array
 
