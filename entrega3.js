@@ -1,17 +1,16 @@
-const personasAutorizadas = ["Rodrigo", "Melina", "Lucas"]; // Nombres de las personas autorizadas puestas en un array
+//Simple verificacion de "Persona" (WIP)
 
-function verificarIngreso() {
-const nombre = prompt("Por favor, ingrese su nombre:");
+const nombreUsuario = prompt("¿Eres personal de Coderhouse? Si/No");
 
-if (personasAutorizadas.includes(nombre)) {
-    console.log("¡Bienvenido, " + nombre + "! Puedes acceder al Carro de compras.");
-    // Aquí puedes agregar el resto del código que deseas ejecutar
+if (nombreUsuario === "Si") {
+    // Código a ejecutar si el usuario ingresa "Si"
+    alert("Bienvenido, Profe y tutor!");
+    
 } else {
-    console.log("Lo siento, no tienes acceso al Carro de compras.");
+    // Código a ejecutar si el usuario no es "No" persona
+    alert("Acceso denegado. El usuario debe ser personal de Coder.");
+    window.location.href = "https://img.freepik.com/vector-gratis/fondo-pagina-error-404-distorsion_23-2148090410.jpg?w=826&t=st=1684793465~exp=1684794065~hmac=f0b2a37d932c56d808c81837231cb6357aac7efbc46096df521914b58f04caac";
 }
-}
-
-verificarIngreso();
 
 
 
