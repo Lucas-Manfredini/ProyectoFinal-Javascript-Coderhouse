@@ -1,19 +1,3 @@
-//Simple verificacion de "Persona" (WIP)
-
-const nombreUsuario = prompt("¿Eres personal de Coderhouse? Si/No");
-
-if (nombreUsuario === "Si") {
-    // Código a ejecutar si el usuario ingresa "Si"
-    alert("Bienvenido, Profe y tutor!");
-    
-} else {
-    // Código a ejecutar si el usuario no es "No" persona
-    alert("Acceso denegado. El usuario debe ser personal de Coder.");
-    window.location.href = "https://img.freepik.com/vector-gratis/fondo-pagina-error-404-distorsion_23-2148090410.jpg?w=826&t=st=1684793465~exp=1684794065~hmac=f0b2a37d932c56d808c81837231cb6357aac7efbc46096df521914b58f04caac";
-}
-
-
-
 let Carro = []; // Items del carro en Array
 let Almacen = []; // Stock de productos en Array
 
@@ -24,6 +8,38 @@ const btnAgregar = document.getElementById('agregar');
 const btnOrdenar = document.getElementById('ordenar');
 const btnVaciar = document.getElementById('vaciar');
 const total = document.getElementById('total');
+
+// Función asincrónica para esperar 5 segundos al inicio
+function esperarCincoSegundos() {
+    return new Promise((resolve) => {
+    setTimeout(() => {
+        Swal.fire ("Bienvenidos, Gracias por aguardar la verificacion."); // Pasados los 5 segundos este alert aparece con el mensaje.
+        resolve();
+    }, 5000);
+    });
+}
+
+
+async function iniciarPrograma() {
+    // Agregar asincronía al inicio del programa
+    const nombreUsuario = prompt("¿Es usuario de Coder? (Si/No)");
+    if (nombreUsuario === "Si") {
+    await esperarCincoSegundos();
+    document.getElementById('overlay').style.display = 'none';
+    } else {
+      // Redirección si el usuario dice "NO"
+    alert("Acceso denegado. El usuario debe ser personal de Coder.");
+    window.location.href = "https://img.freepik.com/vector-gratis/fondo-pagina-error-404-distorsion_23-2148090410.jpg?w=826&t=st=1684793465~exp=1684794065~hmac=f0b2a37d932c56d808c81837231cb6357aac7efbc46096df521914b58f04caac";
+      return; // Detener la ejecución del programa
+    }
+
+    allEventListeners();
+    traerItems();
+}
+
+iniciarPrograma();
+
+
 
 // Push para almacen, Agregar items al carro
 Almacen.push(new Productos('Cafe', 1250, 'Santo domingo'));
@@ -39,13 +55,12 @@ Almacen.push(new Productos('Jamon', 150, 'Serrano Paladini'));
 
 localStorage.setItem('Almacen', JSON.stringify(Almacen));
 
-allEventListeners();
 
 function allEventListeners() {
 window.addEventListener('DOMContentLoaded', traerItems);
 btnVaciar.addEventListener('click', vaciarCarrito);
 
-btnAgregar.addEventListener('submit', (e) => {
+document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault(); // No refrescar la página
     const productoSeleccionado = Almacen[+selectProductos.value]; // Obtención de producto
     console.log(productoSeleccionado);
@@ -54,10 +69,10 @@ btnAgregar.addEventListener('submit', (e) => {
     );
     console.log(indiceCarrito);
     if (indiceCarrito !== -1) {
-    Carro[indiceCarrito].cantidad++;
+        Carro[indiceCarrito].cantidad += 1;
     } else {
-    const item = new Item(productoSeleccionado, 1);
-    Carro.push(item);
+        const item = new Item(productoSeleccionado, 1);
+        Carro.push(item);
     }
     // Actualización de carrito
     actualizarTablaCarrito();

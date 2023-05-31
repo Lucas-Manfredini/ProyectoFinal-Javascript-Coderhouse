@@ -26,3 +26,9 @@ h5{
     justify-content: center;
     background-color: bisque;
 }
+
+#overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
