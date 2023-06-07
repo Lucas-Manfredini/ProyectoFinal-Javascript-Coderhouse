@@ -78,6 +78,12 @@ function allEventListeners() {
 window.addEventListener('DOMContentLoaded', traerItems);
 btnVaciar.addEventListener('click', vaciarCarrito);
 
+btnOrdenar.addEventListener('click', () => {
+    // Redirección a una página con mensaje de "En mantenimiento"
+    window.location.href = '404.html';
+});
+
+
 document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault(); // No refrescar la página
     const productoSeleccionado = Almacen[+selectProductos.value]; // Obtención de producto
@@ -89,7 +95,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
     if (indiceCarrito !== -1) {
         Carro[indiceCarrito].cantidad += 1;
     } else {
-        const item = new Item(productoSeleccionado, 1);
+        const item = new Item(productoSeleccionado, 1, productoSeleccionado.proveedor);
         Carro.push(item);
     }
     // Actualización de carrito
@@ -116,34 +122,40 @@ Almacen.forEach((producto, index) => {
 }
 
 function actualizarTablaCarrito() {
-tabla.innerHTML = '';
-total.innerText = 0;
-Carro.length ? btnVaciar.removeAttribute('disabled') : btnVaciar.setAttribute('disabled', true);
-Carro.forEach((item) => {
+    tabla.innerHTML = '';
+    total.innerText = 0;
+    Carro.length ? btnVaciar.removeAttribute('disabled') : btnVaciar.setAttribute('disabled', true);
+    Carro.forEach((item) => {
     newRow(item);
-});
+    });
 }
+
 
 // Creación de líneas para la tabla
 function newRow(item) {
-const row = document.createElement('tr');
-let td = document.createElement('td');
-const posCarrito = Carro.indexOf(item);
+    const row = document.createElement('tr');
+    let td = document.createElement('td');
+    const posCarrito = Carro.indexOf(item);
 
-td.classList.add('font-white');
-td.textContent = item.producto.nombre;
-row.appendChild(td);
+    td.classList.add('font-white');
+    td.textContent = item.producto.nombre;
+    row.appendChild(td);
 
-td.classList.add('font-white');
-td = document.createElement('td');
-td.textContent = item.cantidad;
-row.appendChild(td);
+    td.classList.add('font-white');
+    td = document.createElement('td');
+    td.textContent = item.cantidad;
+    row.appendChild(td);
 
-td.classList.add('font-white');
-td = document.createElement('td');
-td.textContent = item.producto.precio;
+    td.classList.add('font-white');
+    td = document.createElement('td');
+    td.textContent = item.proveedor;
+    row.appendChild(td);
 
-row.appendChild(td);
+    td.classList.add('font-white');
+    td = document.createElement('td');
+    td.textContent = item.producto.precio;
+    row.appendChild(td);
+
 
 const btnEliminar = document.createElement('button');
 btnEliminar.className = 'btn btn-danger';
