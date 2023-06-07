@@ -39,6 +39,22 @@ async function iniciarPrograma() {
 
 iniciarPrograma();
 
+const apiKey = '6bf74fd2a92f07e068556f08319e70aa';
+const ciudad = 'Mar del plata';
+const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}`;
+
+fetch(apiUrl)
+.then(response => response.json())
+.then(data => {
+    const temperatura = data.main.temp;
+    const ciudad = data.name;
+
+    const widget = document.getElementById('widget');
+    widget.textContent = `La temperatura en ${ciudad} es ${temperatura}°C`;
+})
+.catch(error => {
+    console.log('Error al obtener los datos de la API:', error);
+});
 
 
 // Push para almacen, Agregar items al carro
