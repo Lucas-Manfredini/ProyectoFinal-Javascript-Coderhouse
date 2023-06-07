@@ -39,10 +39,12 @@ async function iniciarPrograma() {
 
 iniciarPrograma();
 
+//Datos de la API (Openweathermap)
 const apiKey = '6bf74fd2a92f07e068556f08319e70aa';
 const ciudad = 'Mar del plata';
 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}`;
 
+//Aca estoy llamando a la API
 fetch(apiUrl)
 .then(response => response.json())
 .then(data => {
